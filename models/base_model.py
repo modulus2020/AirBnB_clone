@@ -15,18 +15,18 @@ class BaseModel:
             *args (any): Unused.
             **kwargs (dict): Key/value pairs of attributes.
         """
-        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        form = "%Y-%m-%dT%H:%M:%S.%f"
         if kwargs != 0:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
-                    self.__dict__[key] = datetime.strptime(value, time_format)
+                    self.__dict__[key] = datetime.strptime(value, form)
                 else:
                     self.__dict__[key] = value
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            model.storage.new(self)
 
     def __str__(self):
         """Return a string representation of the BaseModel."""
@@ -36,7 +36,7 @@ class BaseModel:
     def save(self):
         """Update the public instance attribute update_at."""
         self.updated_at = datetime.now()
-        storage.save()
+        model.storage.save()
 
     def to_dict(self):
         """Return a dictionary containing keys/value of __dict__."""
