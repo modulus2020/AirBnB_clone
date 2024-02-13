@@ -103,11 +103,11 @@ class TestState_save(unittest.TestCase):
             os.rename("tmp", "file.json")
         except IOError:
             pass
-    
+
     def test_one_save(Self):
         st = State()
-        sleep().05)
-        first_Updated_at = st.updated_at
+        sleep(0.05)
+        first_updated_at = st.updated_at
         st.save()
         self.assertLess(first_updated_at, st.updated_at)
 
@@ -157,7 +157,7 @@ class TestState_to_dict(unittest.TestCase):
 
     def test_to_dict_datetime_attributes_are_strs(self):
         st = State()
-        st_dict =st.to_dict()
+        st_dict = st.to_dict()
         self.assertEqual(str, type(st_dict["id"]))
         self.assertEqual(str, type(st_dict["created_at"]))
         self.assertEqual(str, type(st_dict["updated_at"]))

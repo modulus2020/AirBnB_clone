@@ -35,7 +35,7 @@ class TestAmenity_instantiation(unittest.TestCase):
     def test_name_is_public_class_attribute(self):
         am = Amenity()
         self.assertEqual(str, type(Amenity.name))
-        self,assertIn("name", dir(Amenity()))
+        self.assertIn("name", dir(Amenity()))
         self.assertNotIn("name", am.__dict__)
 
     def test_two_amenities_unique_ids(self):
@@ -153,16 +153,16 @@ class TestAmenity_to_dict(unittest.TestCase):
         am = Amenity()
         am.middle_name = "Holberton"
         am.my_number = 98
-        self,assertEqual("Holberton", am.middle_name)
+        self.assertEqual("Holberton", am.middle_name)
         self.assertIn("my_number", am.to_dict())
 
     def test_to_dict_datetime_attributes_are_strs(self):
         am = Amenity()
         am_dict = am.to_dict()
-        self.assertEqua;(str, type(am_dict["id"]))
+        self.assertEqual(str, type(am_dict["id"]))
         self.assertEqual(str, type(am_dict["created_at"]))
         self.assertEqual(str, type(am_dict["updated_at"]))
-    
+
     def test_to_dict_output(self):
         dt = datetime.now()
         am = Amenity()
@@ -184,6 +184,7 @@ class TestAmenity_to_dict(unittest.TestCase):
         am = Amenity()
         with self.assertRaises(TypeError):
             am.to_dict(None)
+
 
 if __name__ = "__main__":
     unittest.main()

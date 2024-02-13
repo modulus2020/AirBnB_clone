@@ -16,7 +16,7 @@ from models.place import Place
 
 class TestPlace_instantiation(unittest.TestCase):
     """Unittests or testing instantiation of the Place class"""
-    
+
     def test_no_args_instantiates(self):
         self.assertEqual(Place, type(Place()))
 

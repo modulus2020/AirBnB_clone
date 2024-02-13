@@ -21,13 +21,13 @@ class TestCity_instantiation(unittest.TestCase):
         self.assertEqual(City, type(City()))
 
     def test_new_instances_stored_in_objects(self):
-        self.assertIn(City()< models.storage.all().values())
+        self.assertIn(City(), models.storage.all().values())
 
     def test_id_is_public_str(self):
         self.assertEqual(str, type(City().id))
 
     def test_creadted_at_is_public_datetime(self):
-        self.assertEqual(datetime, type(City()).created_at))
+        self.assertEqual(datetime, type(City().created_at))
 
     def test_updated_at_is_public_datetime(self):
         self.assertEqual(datetime, type(City().updated_at))
@@ -66,12 +66,12 @@ class TestCity_instantiation(unittest.TestCase):
         dt_repr = repr(dt)
         cy = City()
         cy.id = "123456"
-        cy.created_at = cy.updated_at =dt
+        cy.created_at = cy.updated_at = dt
         cystr = cy.__str__()
         self.assertIn("[City] (123456)", cystr)
         self.assertIn("'id': '123456'", cystr)
         self.assertIn("'created_at': " + dt_repr, cystr)
-        self.assertIn("'updated_at': " +dt_repr, cystr)
+        self.assertIn("'updated_at': " + dt_repr, cystr)
 
     def test_args_unused(self):
         cy = City(None)
