@@ -99,7 +99,7 @@ class TestUser_save(unittest.TestCase):
             os.rename("file.json", "tmp")
         except IOError:
             pass
-    
+
     def tearDown(self):
         try:
             os.remove("file.json")
@@ -177,7 +177,7 @@ class TestUser_to_dict(unittest.TestCase):
             'id': '123456',
             '__class__': 'User',
             'created_at': dt.isoformat(),
-            'updated_at': dt.isofr=ormat(),
+            'updated_at': dt.isoformat(),
         }
         self.assertDictEqual(us.to_dict(), tdict)
 
