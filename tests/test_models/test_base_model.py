@@ -54,7 +54,7 @@ class TestBaseModel_instantiation(unittest.TestCase):
         dt_repr = repr(dt)
         bm = BaseModel()
         bm.id = "123456"
-        bm.created_at = bm.updated_at dt
+        bm.created_at = bm.updated_at = dt
         bmstr = bm.__str__()
         self.assertIn("[BaseModel] (123456)", bmstr)
         self.assertIn("'id': '123456'", bmstr)
@@ -142,7 +142,7 @@ class TestBaseModel_to_dict(unittest.TestCase):
     """Unittests for testing to_dict method of the BaseModel class"""
 
     def test_to_dict_type(self):
-        bm = baseModel()
+        bm = BaseModel()
         self.assertTrue(dict, type(bm.to_dict()))
 
     def test_to_dict_contains_correct_keys(self):
@@ -154,7 +154,7 @@ class TestBaseModel_to_dict(unittest.TestCase):
 
     def test_to_dict_contains_added_attributes(self):
         bm = BaseModel()
-        nm.name = "Holberton"
+        bm.name = "Holberton"
         bm.my_number = 98
         self.assertIn("name", bm.to_dict())
         self.assertIn("my_number", bm.to_dict())
@@ -184,7 +184,7 @@ class TestBaseModel_to_dict(unittest.TestCase):
 
     def test_to_dict_with_arg(self):
         bm = BaseModel()
-        self.assertRaises(TypeError):
+        with self.assertRaises(TypeError):
             bm.to_dict(None)
 
 
