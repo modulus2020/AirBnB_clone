@@ -76,14 +76,14 @@ class TestFileStorage_methods(unittest.TestCase):
         pl = Place()
         cy = City()
         am = Amenity()
-        rv = Review()
+        re = Review()
         models.storage.new(bm)
         models.storage.new(us)
         models.storage.new(st)
         models.storage.new(pl)
         models.storage.new(cy)
         models.storage.new(am)
-        models.storage.new(rv)
+        models.storage.new(re)
         self.assertIn("BaseModel." + bm.id, models.storage.all().keys())
         self.assertIn(bm, models.storage.all().values())
         self.assertIn("User." + us.id, models.storage.all().keys())
@@ -96,8 +96,8 @@ class TestFileStorage_methods(unittest.TestCase):
         self.assertIn(cy, models.storage.all().values())
         self.assertIn("Amenity." + am.id, models.storage.all().keys())
         self.assertIn(am, models.storage.all().values())
-        self.assertIn("Review." + rv.id, models.storage.all().keys())
-        self.assertIn(rv, models.storage.all().values())
+        self.assertIn("Review." + re.id, models.storage.all().keys())
+        self.assertIn(re, models.storage.all().values())
 
     def test_new_with_args(self):
         with self.assertRaises(TypeError):
@@ -110,14 +110,14 @@ class TestFileStorage_methods(unittest.TestCase):
         pl = Place()
         cy = City()
         am = Amenity()
-        rv = Review()
+        re = Review()
         models.storage.new(bm)
         models.storage.new(us)
         models.storage.new(st)
         models.storage.new(pl)
         models.storage.new(cy)
         models.storage.new(am)
-        models.storage.new(rv)
+        models.storage.new(re)
         models.storage.save()
         save_text = ""
         with open("file.json", "r") as f:
@@ -128,7 +128,7 @@ class TestFileStorage_methods(unittest.TestCase):
             self.assertIn("Place." + pl.id, save_text)
             self.assertIn("City." + cy.id, save_text)
             self.assertIn("Amenity." + am.id, save_text)
-            self.assertIn("Review." + rv.id, save_text)
+            self.assertIn("Review." + re.id, save_text)
 
     def test_save_with_arg(self):
         with self.assertRaises(TypeError):
@@ -141,14 +141,14 @@ class TestFileStorage_methods(unittest.TestCase):
         pl = Place()
         cy = City()
         am = Amenity()
-        rv = Review()
+        re = Review()
         models.storage.new(bm)
         models.storage.new(us)
         models.storage.new(st)
         models.storage.new(pl)
         models.storage.new(cy)
         models.storage.new(am)
-        models.storage.new(rv)
+        models.storage.new(re)
         models.storage.save()
         models.storage.reload()
         objs = FileStorage._FileStorage__objects
@@ -158,7 +158,7 @@ class TestFileStorage_methods(unittest.TestCase):
         self.assertIn("Place." + pl.id, objs)
         self.assertIn("City." + cy.id, objs)
         self.assertIn("Amenity." + am.id, objs)
-        self.assertIn("Review." + rv.id, objs)
+        self.assertIn("Review." + re.id, objs)
 
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
