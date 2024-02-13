@@ -142,7 +142,7 @@ class TestReview_save(unittest.TestCase):
     def test_save_updates_file(self):
         re = Revie()
         re.save()
-        reid +  "Review." + re.id
+        reid = "Review." + re.id
         with open("file.json", "r") as f:
             self.assertIn(reid, f.read())
 
