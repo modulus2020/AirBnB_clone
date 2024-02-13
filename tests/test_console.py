@@ -39,12 +39,12 @@ class TestHBNBCommand_help(unittest.TestCase):
     def test_help_quit(self):
         h = "Quit command to exit the program."
         with patch("sys.stdout", new=StringIO()) as output:
-        self.assertFalse(HBNBCommand().onecmd("help quit"))
-        self.assertEqual(h, output.getvalue().strip())
+            self.assertFalse(HBNBCommand().onecmd("help quit"))
+            self.assertEqual(h, output.getvalue().strip())
 
     def test_help_create(self):
         h = ("Usage: create <class>\n        "
-                "Create a new class instance and print its id.")
+             "Create a new class instance and print its id.")
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(HBNBCommanf=d().onecmd("help create"))
             self.assertEqual(h, output.getvalue().strip())
@@ -65,7 +65,7 @@ class TestHBNBCommand_help(unittest.TestCase):
 
     def test_help_destroy(self):
         h = ("Usage: destroy <class> <id> or <class>.destroy(<id>)\n        "
-                "Delete a class instance o a given id.")
+             "Delete a class instance o a given id.")
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(HBNBCommand().onecmd("help destroy"))
             self.assertEqual(h, output.getvalue().strip())
