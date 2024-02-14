@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module that defines the BaseModel class."""
+"""Defines the BaseModel class."""
 import models
 from uuid import uuid4
 from datetime import datetime
@@ -16,27 +16,22 @@ class BaseModel:
             **kwargs (dict): Key/value pairs of attributes.
         """
         form = "%Y-%m-%dT%H:%M:%S.%f"
-        if kwargs != 0:
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+        if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     self.__dict__[key] = datetime.strptime(value, form)
                 else:
                     self.__dict__[key] = value
         else:
-            self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-            model.storage.new(self)
-
-    def __str__(self):
-        """Return a string representation of the BaseModel."""
-        return "[{}] ({}) {}".format(
-                self.__class__.__name__, self.id, self.__dict__)
+            models.storage.new(self)
 
     def save(self):
         """Update the public instance attribute update_at."""
         self.updated_at = datetime.now()
-        model.storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """Return a dictionary containing keys/value of __dict__."""
@@ -45,3 +40,8 @@ class BaseModel:
         mod_dict['created_at'] = self.created_at.isoformat()
         mod_dict['updated_at'] = self.updated_at.isoformat()
         return mod_dict
+
+    def __str__(self):
+        """Return the print/str representation of the BaseModel instance"""
+        clname = self.__class__.name__
+        return "[{}] ({}) {}".format(clname, self.id, self.__dict__)

@@ -103,7 +103,7 @@ class TestBaseModel_save(unittest.TestCase):
         except IOError:
             pass
         try:
-            os.renmae("tmp", "file.json")
+            os.rename("tmp", "file.json")
         except IOError:
             pass
 
